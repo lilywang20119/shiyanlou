@@ -45,6 +45,7 @@ if __name__ =='__main__':
             
         except:
             print("Parameter Error")
-    #for key,value in salary_dict.items():
-        print("{}:{}".format(arg.split(':')[0],f1(salary_dict[arg.split(':')[0]])))
+    for key,value in salary_dict.items():
+        print("{}:{}".format(key,f1(value)))
+        #print("{}:{}".format(arg.split(':')[0],f1(salary_dict[arg.split(':')[0]])))
 
