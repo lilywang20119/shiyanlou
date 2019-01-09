@@ -49,13 +49,13 @@ def file(filename):
         abort(404)
     return render_template('file.html',file_item=file_item)
 
-@app.route('/nothing')
+@app.route('/nothing')#@app.erroehandler(404)
 def nothing():
-    return render_template('404.html', )
+    return render_template('404.html'),404
 
 
 if __name__ == '__main__':
     app.run()
-    print(files.directory)
+    
 
 
