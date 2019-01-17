@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "base.html" %}
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+</head>
+<body>
+
+    {% for file in files %}
+    <li><a href="{{url_for('file',file_id=file.id)}}">{{ file.title }}</a></li>
+    <li>{{ file.tags}}</a></li>
+    {% endfor %}
+
+
+
+
+
+
+</body>
+</html>
