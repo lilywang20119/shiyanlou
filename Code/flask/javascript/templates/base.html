@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--Bootstrap core CSS -->
+    <link href="{{ url_for('static',filename="bootstrap-4.0.0-dist/css/bootstrap.min.css") }}" rel="stylesheet" >
+</head>
+
+<body>
+    <div>
+        {% block header %}
+        <p>header</p>
+        {% endblock %}
+    </div>
+    <div>
+        {% block content %}
+        <p> content </p>
+        {% endblock %}
+    </div>
+
+    <div>
+        {% block footer %}
+        <p>footer</p>
+        {% endblock %}
+    </div>
+    <script src="{{ url_for('static',filename=" bootstrap-4.0.0-dist/js/bootstrap.min.js ") }}"></script>
+</body>
+
+</html>
