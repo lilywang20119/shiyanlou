@@ -1,0 +1,51 @@
+{% extends "admin/index.html" %}
+{% from "macros.html" import render_pagination %}
+
+{% block title %}
+Admin - users
+{% endblock %}
+
+{% block operation %}
+<a href="{{ url_for('admin.add_user') }}" type="button" class="btn btn-primary">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    Add User
+</a>
+{% endblock %}
+
+
+{% block admin %}
+<table class="table">
+    <thread>
+        <tr>
+            <th>ID</th>
+            <th>username</th>
+            <th>email</th>
+            <th>password</th>
+            <th>role</th>
+        </tr>
+        <tbody>
+            {% for user in pagination.items %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.role }}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a href="{{ url_for('admin.edit_user', user_id=user.id) }}" type="button" class="btn btn-default" title="edit">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" title="edit"></span>
+                        </a>
+                        <a href="{{ url_for('admin.delete_user',user_id=user.id) }}" type="button" class="btn btn-default" title="delete">
+                            <span class="glyphicon glyphicon-trash" title="delete" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thread>
+</table>
+
+{{ render_pagination(pagination,'admin.users') }}
+{% endblock %}

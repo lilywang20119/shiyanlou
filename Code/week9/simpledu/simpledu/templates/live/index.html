@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Live{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-9">
+        <video id="videoElement" width="100%" height="500px" controls="controls"></video>
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.3.3/flv.min.js"></script>
+<script>
+    if (flvjs.isSupported()){
+        //获取video标签
+        var videoElement = document.getElementById('videoElement');
+        //初始化播放器
+        var flvPlayer = flvjs.createPlayer({
+            type:'flv',
+            isLive:true,
+            url:'https://data.bilibili.com/log/web?0005161552310034476home|1.5.13|346|109176|true|y2eXmaKZ-Tjm7-496r-ttPM-YdpTWxfb1465|0|0|https://nbvc.live-play.acgvideo.com/live-bvc/864340/live_2575079_3872656.flv?wsSecret=ae793d7ad8dce5af2529f8473de00b6d&wsTime=1552313603&trid=96755f25447a42a5aeb48d7d755981a5&sig=no&platform=web&pSession=y2eXmaKZ-Tjm7-496r-ttPM-YdpTWxfb1465|30|0|1552310034476'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+    }
+</script>
+{% endblock %}
